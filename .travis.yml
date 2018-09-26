@@ -5,9 +5,9 @@ before_deploy:
   - mv latest.zip dpl_cd_upload/workshop-${TRAVIS_BUILD_NUMBER}.zip
 deploy:
 - provider: s3
-  access_key_id: $AKIAIZAZ5IAJZRDOGQAA
+  access_key_id: $AWS_ACCESS_KEY
   secret_access_key: 
-    secure: $vjDDHfU/whda8krs/0ak77rLY5P4RSvL1+P49zGN
+    secure: $AWS_SECRET_ACCESS_KEY
   local_dir: dpl_cd_upload
   skip_cleanup: true
   region: us-east-1
@@ -15,8 +15,8 @@ deploy:
     branch: master
   bucket: workshop-level400-s3-kimhw
 - provider: codedeploy
-  access_key_id: $AKIAIZAZ5IAJZRDOGQAA
-  secret_access_key: $vjDDHfU/whda8krs/0ak77rLY5P4RSvL1+P49zGN
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
   bucket: workshop-level400-s3-kimhw
   key: workshop-${TRAVIS_BUILD_NUMBER}.zip
   application: workshop-400
